@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import psycopg2
-from config import config
+import config
 
 
 def create_tables():
