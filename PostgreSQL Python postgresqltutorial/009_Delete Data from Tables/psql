@@ -3,4 +3,4 @@
 
 \dt
 
-suppliers=# SELECT * FROM vendors WHERE vendor_id = 1;
+suppliers=# SELECT * FROM parts;
