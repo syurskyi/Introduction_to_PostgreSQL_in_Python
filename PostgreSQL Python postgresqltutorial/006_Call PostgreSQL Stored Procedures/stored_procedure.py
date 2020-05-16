@@ -2,8 +2,6 @@
 import psycopg2
 from config import config
 
-def get_parts_by_vendors():
-
 
 def get_parts(vendor_id):
     """ get parts provided by a vendor specified by the vendor_id """
