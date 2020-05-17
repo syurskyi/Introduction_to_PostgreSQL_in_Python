@@ -1,8 +1,8 @@
 import psycopg2
 
 try:
-    connection = psycopg2.connect(user="sysadmin",
-                                  password="pynative@#29",
+    connection = psycopg2.connect(user="syurskyi",
+                                  password="1234",
                                   host="127.0.0.1",
                                   port="5432",
                                   database="postgres_db")

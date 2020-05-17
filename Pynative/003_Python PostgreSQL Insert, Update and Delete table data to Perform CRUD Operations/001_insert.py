@@ -6,20 +6,19 @@ try:
                                   host="127.0.0.1",
                                   port="5432",
                                   database="postgres_db")
-
-   PostgreSQL_select_Query = "select * from mobile"
    cursor = connection.cursor()
 
-   cursor.execute(PostgreSQL_select_Query)
+   postgres_insert_query = """ INSERT INTO mobile (ID, MODEL, PRICE) VALUES (%s,%s,%s)"""
+   record_to_insert = (5, 'One Plus 6', 950)
+   cursor.execute(postgres_insert_query, record_to_insert)
 
-   mobile_records_one = cursor.fetchone()
-   print ("Printing first record", mobile_records_one)
-
-   mobile_records_two = cursor.fetchone()
-   print("Printing second record", mobile_records_two)
+   connection.commit()
+   count = cursor.rowcount
+   print (count, "Record inserted successfully into mobile table")
 
 except (Exception, psycopg2.Error) as error :
-    print ("Error while getting data from PostgreSQL", error)
+    if(connection):
+        print("Failed to insert record into mobile table", error)
 
 finally:
     #closing database connection.
@@ -29,9 +28,7 @@ finally:
         print("PostgreSQL connection is closed")
 
 
-# Output:
-#
-# Printing first record (1, 'IPhone XS', 1000.0)
-# Printing second record (2, 'Samsung Galaxy S9', 900.0)
-# PostgreSQL connection is closed
+#vOutput:
 
+# 1 Record inserted successfully into mobile table
+# PostgreSQL connection is closed
