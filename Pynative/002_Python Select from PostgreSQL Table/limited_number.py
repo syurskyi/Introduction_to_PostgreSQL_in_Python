@@ -1,19 +1,28 @@
 import psycopg2
 
 try:
-    connection = psycopg2.connect(user="syurskyi",
-                                  password="1234",
+    connection = psycopg2.connect(user="sysadmin",
+                                  password="pynative@#29",
                                   host="127.0.0.1",
                                   port="5432",
                                   database="postgres_db")
+
+    print("Selecting rows from mobile table using cursor.fetchall")
     cursor = connection.cursor()
     postgreSQL_select_Query = "select * from mobile"
 
     cursor.execute(postgreSQL_select_Query)
-    print("Selecting rows from mobile table using cursor.fetchall")
-    mobile_records = cursor.fetchall()
+    mobile_records = cursor.fetchmany(2)
 
-    print("Print each row and it's columns values")
+    print("Printing 2 rows")
+    for row in mobile_records:
+        print("Id = ", row[0], )
+        print("Model = ", row[1])
+        print("Price  = ", row[2], "\n")
+
+    mobile_records = cursor.fetchmany(2)
+
+    print("Printing next 2 rows")
     for row in mobile_records:
         print("Id = ", row[0], )
         print("Model = ", row[1])
@@ -30,23 +39,25 @@ finally:
         print("PostgreSQL connection is closed")
 
 
-
 # Output:
 #
 # Selecting rows from mobile table using cursor.fetchall
-# Print each row and it's columns values
+#
+# Printing 2 rows
 #
 # Id =  1
 # Model =  IPhone XS
 # Price  =  1000.0
 #
-# Id =  3
-# Model =  Google Pixel
-# Price  =  700.0
-#
 # Id =  2
 # Model =  Samsung Galaxy S9
 # Price  =  900.0
+#
+# Printing next 2 rows
+#
+# Id =  3
+# Model =  Google Pixel
+# Price  =  700.0
 #
 # Id =  4
 # Model =  LG
