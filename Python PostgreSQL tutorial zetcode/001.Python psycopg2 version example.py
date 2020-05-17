@@ -8,8 +8,8 @@ con = None
 
 try:
 
-    con = psycopg2.connect(database='testdb', user='postgres',
-        password='s$cret')
+    con = psycopg2.connect(database='testdb', user='syurskyi',
+        password='1234')
 
     cur = con.cursor()
     cur.execute('SELECT version()')
@@ -26,3 +26,6 @@ finally:
 
     if con:
         con.close()
+
+# $ version.py
+# PostgreSQL 11.1, compiled by Visual C++ build 1914, 64-bit

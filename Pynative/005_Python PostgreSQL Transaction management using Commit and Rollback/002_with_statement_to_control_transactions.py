@@ -1,8 +1,8 @@
 import psycopg2
 from psycopg2 import Error
 
-connection = psycopg2.connect(user="postgres",
-                              password="pass@#29",
+connection = psycopg2.connect(user="syurskyi",
+                              password="1234",
                               host="127.0.0.1",
                               port="5432",
                               database="postgres_db")
